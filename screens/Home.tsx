@@ -3,7 +3,7 @@ import React from 'react';
 import {getAllProductsData} from '../util/apiList';
 // @ts-expect-error TS(7016): Could not find a declaration file for module 'styl... Remove this comment to see the full error message
 import styled from 'styled-components';
-import UserActions from '../redux/product-redux';
+import ProductActions from '../redux/product-redux';
 import {connect} from 'react-redux';
 
 const Container = styled(ScrollView)`
@@ -219,7 +219,7 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     saveSelectedProducts: (data: any) =>
       // @ts-expect-error TS(2722): Cannot invoke an object which is possibly 'undefin... Remove this comment to see the full error message
-      dispatch(UserActions.saveSelectedProducts(data)),
+      dispatch(ProductActions.saveSelectedProducts(data)),
   };
 };
 export default connect(null, mapDispatchToProps)(Home);

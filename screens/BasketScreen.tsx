@@ -1,8 +1,6 @@
 import {
   View,
   Text,
-  FlatList,
-  TouchableOpacity,
   Image,
   ScrollView,
 } from 'react-native';
@@ -10,7 +8,7 @@ import React, {useState} from 'react';
 // @ts-expect-error TS(7016): Could not find a declaration file for module 'styl... Remove this comment to see the full error message
 import styled from 'styled-components';
 import {useSelector, connect} from 'react-redux';
-import UserActions from '../redux/product-redux';
+import ProductActions from '../redux/product-redux';
 
 const PriceText = styled.Text`
   font-style: normal;
@@ -20,6 +18,16 @@ const PriceText = styled.Text`
   /* identical to box height, or 29px */
   /* Black */
   color: #222222;
+`;
+
+const ItemPriceText = styled.Text`
+color: black;
+font-size: 18px;
+font-weight: bold;
+margin-left: auto;
+margin-top: auto;
+margin-bottom: 10%;
+margin-right: 10%;
 `;
 
 const Container = styled(ScrollView)`
@@ -186,18 +194,9 @@ const BasketScreen = ({saveSelectedProducts}: any) => {
                 <RemoveButton onPress={() => removeItems(item)}>
                   <Text>Remove</Text>
                 </RemoveButton>
-                <Text
-                  style={{
-                    color: 'black',
-                    fontSize: 18,
-                    fontWeight: 'bold',
-                    marginLeft: 'auto',
-                    marginTop: 'auto',
-                    marginBottom: '10%',
-                    marginRight: '10%',
-                  }}>
+                <ItemPriceText>
                   {item.price + ' $'}
-                </Text>
+                </ItemPriceText>
               </View>
             </IndividualProductList>
           </Product>
@@ -211,7 +210,7 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     saveSelectedProducts: (data: any) =>
       // @ts-expect-error TS(2722): Cannot invoke an object which is possibly 'undefin... Remove this comment to see the full error message
-      dispatch(UserActions.saveSelectedProducts(data)),
+      dispatch(ProductActions.saveSelectedProducts(data)),
   };
 };
 export default connect(null, mapDispatchToProps)(BasketScreen);
