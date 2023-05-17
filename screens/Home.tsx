@@ -3,7 +3,7 @@ import React from 'react';
 import {getAllProductsData} from '../util/apiList';
 // @ts-expect-error TS(7016): Could not find a declaration file for module 'styl... Remove this comment to see the full error message
 import styled from 'styled-components';
-import UserActions from '../redux/user-redux';
+import UserActions from '../redux/product-redux';
 import {connect} from 'react-redux';
 
 const Container = styled(ScrollView)`
@@ -158,6 +158,8 @@ const Home = ({navigation, saveSelectedProducts}: any) => {
         </SectionHeader>
         <FlatList
           data={products}
+          numColumns={2}
+
           // @ts-expect-error TS(2769): No overload matches this call.
           renderItem={(item: any, index: any) => (
             <ProductsView onPress={() => showSelected(item)} key={index}>
@@ -180,10 +182,8 @@ const Home = ({navigation, saveSelectedProducts}: any) => {
                 </SelectText>
               </InnerView>
 
-        </ProductsView>
-
-          numColumns={2}
-        />
+        </ProductsView>)}
+ />
       </>
     );
   }, [products]);

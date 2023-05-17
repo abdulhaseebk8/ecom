@@ -1,7 +1,7 @@
 import {createStore, combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
-  user: require('./user-redux').reducer,
+  user: require('./product-redux').reducer,
 });
 
 export default rootReducer;

@@ -10,7 +10,7 @@ import React, {useState} from 'react';
 // @ts-expect-error TS(7016): Could not find a declaration file for module 'styl... Remove this comment to see the full error message
 import styled from 'styled-components';
 import {useSelector, connect} from 'react-redux';
-import UserActions from '../redux/user-redux.js';
+import UserActions from '../redux/product-redux';
 
 const PriceText = styled.Text`
   font-style: normal;
@@ -107,7 +107,6 @@ const BasketScreen = ({saveSelectedProducts}: any) => {
   const [numberOfItems, setNumberOfItems] = useState({});
 
   const removeItems = (item: any) => {
-    console.log('item id', item.id);
     let copyOfSelectedProducts = JSON.parse(JSON.stringify(selectedProducts));
     let filteredData = copyOfSelectedProducts?.filter(
       (copy: any) => copy.id != item.id,
