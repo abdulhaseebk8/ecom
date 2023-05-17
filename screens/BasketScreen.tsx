@@ -7,6 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import React, {useState} from 'react';
+// @ts-expect-error TS(7016): Could not find a declaration file for module 'styl... Remove this comment to see the full error message
 import styled from 'styled-components';
 import {useSelector, connect} from 'react-redux';
 import UserActions from '../redux/user-redux.js';
@@ -93,7 +94,6 @@ const RemoveButton = styled.TouchableOpacity`
   margin-right: 5px;
 `;
 
-
 const Product = styled.View`
   width: 343px;
   height: 200px;
@@ -101,19 +101,21 @@ const Product = styled.View`
   margin-top: 10px;
 `;
 
-const BasketScreen = ({ saveSelectedProducts }) => {
+const BasketScreen = ({saveSelectedProducts}: any) => {
+  // @ts-expect-error TS(2571): Object is of type 'unknown'.
   const {selectedProducts} = useSelector(state => state.user);
   const [numberOfItems, setNumberOfItems] = useState({});
 
-  const removeItems = (item) =>{
-    console.log('item id', item.id)
-    let copyOfSelectedProducts = JSON.parse(JSON.stringify(selectedProducts))
-    let filteredData = copyOfSelectedProducts?.filter((copy)=> copy.id != item.id )
-    saveSelectedProducts(filteredData)
-  }
+  const removeItems = (item: any) => {
+    console.log('item id', item.id);
+    let copyOfSelectedProducts = JSON.parse(JSON.stringify(selectedProducts));
+    let filteredData = copyOfSelectedProducts?.filter(
+      (copy: any) => copy.id != item.id,
+    );
+    saveSelectedProducts(filteredData);
+  };
 
-
-  const handleItemCountChange = (itemId, count) => {
+  const handleItemCountChange = (itemId: any, count: any) => {
     setNumberOfItems(prevCounts => ({
       ...prevCounts,
       [itemId]: count,
@@ -123,10 +125,11 @@ const BasketScreen = ({ saveSelectedProducts }) => {
   return (
     <Container>
       <ShowPriceAndHeading>
-        <PriceText >Basket Screen</PriceText>
+        <PriceText>Basket Screen</PriceText>
       </ShowPriceAndHeading>
-      {selectedProducts?.map((item, index) => {
+      {selectedProducts?.map((item: any, index: any) => {
         const itemId = item.id;
+        // @ts-expect-error TS(7053): Element implicitly has an 'any' type because expre... Remove this comment to see the full error message
         const count = numberOfItems[itemId] || 1;
         return (
           <Product key={itemId}>
@@ -181,9 +184,9 @@ const BasketScreen = ({ saveSelectedProducts }) => {
                 </View>
               </View>
               <View style={{flex: 1}}>
-              <RemoveButton onPress={()=> removeItems(item)}>
-                <Text>Remove</Text>
-            </RemoveButton>
+                <RemoveButton onPress={() => removeItems(item)}>
+                  <Text>Remove</Text>
+                </RemoveButton>
                 <Text
                   style={{
                     color: 'black',
@@ -197,9 +200,7 @@ const BasketScreen = ({ saveSelectedProducts }) => {
                   {item.price + ' $'}
                 </Text>
               </View>
-              
             </IndividualProductList>
-      
           </Product>
         );
       })}
@@ -207,9 +208,11 @@ const BasketScreen = ({ saveSelectedProducts }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-      saveSelectedProducts: (data) => dispatch(UserActions.saveSelectedProducts(data)),
-    };
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    saveSelectedProducts: (data: any) =>
+      // @ts-expect-error TS(2722): Cannot invoke an object which is possibly 'undefin... Remove this comment to see the full error message
+      dispatch(UserActions.saveSelectedProducts(data)),
   };
-  export default connect(null, mapDispatchToProps)(BasketScreen);
+};
+export default connect(null, mapDispatchToProps)(BasketScreen);

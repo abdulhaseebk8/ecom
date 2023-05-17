@@ -1,7 +1,8 @@
 //to pass these tests we have to remove styled components from basket screen
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
-import { Provider } from 'react-redux';
+import {render, fireEvent} from '@testing-library/react-native';
+import {Provider} from 'react-redux';
+// @ts-expect-error TS(7016): Could not find a declaration file for module 'redu... Remove this comment to see the full error message
 import configureStore from 'redux-mock-store';
 import BasketScreen from '../screens/BasketScreen';
 
@@ -14,8 +15,8 @@ describe('BasketScreen', () => {
     const initialState = {
       user: {
         selectedProducts: [
-          { id: 1, name: 'Product 1', price: 10 },
-          { id: 2, name: 'Product 2', price: 20 },
+          {id: 1, name: 'Product 1', price: 10},
+          {id: 2, name: 'Product 2', price: 20},
         ],
       },
     };
@@ -27,10 +28,10 @@ describe('BasketScreen', () => {
     const store = mockStore(initialState);
 
     // Render the BasketScreen component with the mock store and spy function
-    const { getByTestId } = render(
+    const {getByTestId} = render(
       <Provider store={store}>
         <BasketScreen saveSelectedProducts={removeItemsSpy} />
-      </Provider>
+      </Provider>,
     );
 
     // Find the remove button and simulate a press event

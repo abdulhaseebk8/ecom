@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import {View, Button} from 'react-native';
 
-function DummyScreen({ saveSelectedProducts }) {
+function DummyScreen({saveSelectedProducts}: any) {
   const handleRemoveButtonPress = () => {
     saveSelectedProducts();
   };
