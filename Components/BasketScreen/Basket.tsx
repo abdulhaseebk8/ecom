@@ -18,7 +18,7 @@ import {
 import { ProductProperties } from '../product';
 
 const BasketScreen = ({ saveSelectedProducts }: any) => {
-  const { selectedProducts } = useSelector((state) => state.user);
+  const { selectedProducts } = useSelector((state) => state.product);
   const [numberOfItems, setNumberOfItems] = useState<{ [key: number]: number }>({});
 
   const removeItems = (item: ProductProperties) => {

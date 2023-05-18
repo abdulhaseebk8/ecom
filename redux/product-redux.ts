@@ -1,4 +1,3 @@
-import {useSyncExternalStore} from 'react';
 import {createReducer, createActions} from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 
