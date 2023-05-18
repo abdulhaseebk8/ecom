@@ -4,7 +4,7 @@ import {render, fireEvent} from '@testing-library/react-native';
 import {Provider} from 'react-redux';
 // @ts-expect-error TS(7016): Could not find a declaration file for module 'redu... Remove this comment to see the full error message
 import configureStore from 'redux-mock-store';
-import BasketScreen from '../screens/BasketScreen';
+import BasketScreen from '../Components/BasketScreen/Basket';
 
 // Create a mock Redux store
 const mockStore = configureStore([]);

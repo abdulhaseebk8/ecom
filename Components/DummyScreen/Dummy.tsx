@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Button} from 'react-native';
 
-function DummyScreen({saveSelectedProducts}: any) {
+function Dummy({saveSelectedProducts}: any) {
   const handleRemoveButtonPress = () => {
     saveSelectedProducts();
   };
@@ -17,4 +17,4 @@ function DummyScreen({saveSelectedProducts}: any) {
   );
 }
 
-export default DummyScreen;
+export default Dummy;

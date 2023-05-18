@@ -1,4 +1,4 @@
-import {createStore, combineReducers} from 'redux';
+import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
   user: require('./product-redux').reducer,

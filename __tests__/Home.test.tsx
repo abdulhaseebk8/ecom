@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {render, fireEvent} from '@testing-library/react-native';
-import Home from '../screens/Home';
+import Home from '../Components/HomeScreen/Home';
 
 describe('HomeScreen', () => {
   test('renders products section', () => {
